@@ -1,8 +1,10 @@
 package com.example.doordashlite.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -25,8 +27,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Fresco.initialize(this)
 
-        setContentView(R.layout.activity_main)
-
         setView()
         setObserver()
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setView(){
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        adapter = StoreAdapter()
+        adapter = StoreAdapter(mainViewModel)
         binding.storesRecyclerView.layoutManager = LinearLayoutManager(this)
         binding.storesRecyclerView.adapter = adapter
     }
@@ -60,5 +60,24 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        mainViewModel.selectedItem.observe(this, Observer { response ->
+            when(response.status) {
+                Status.SUCCESS -> {
+                    response.data.let {
+                        val intent = Intent(this, DetailsActivity::class.java)
+                        intent.putExtra(BUSINESSID, it)
+                        startActivity(intent)
+                    }
+                }
+                else -> {
+                    Toast.makeText(applicationContext, "No information available for this store", Toast.LENGTH_SHORT)
+                }
+            }
+        })
+    }
+
+    companion object {
+        const val BUSINESSID = "businessId"
     }
 }
