@@ -11,9 +11,7 @@ import com.example.doordashlite.data.RestaurantResponse
 import com.example.doordashlite.databinding.ActivityDetailsBinding
 import com.example.doordashlite.ui.MainActivity.Companion.BUSINESSID
 import com.example.doordashlite.utils.Status
-import com.facebook.drawee.backends.pipeline.Fresco
 import dagger.hilt.android.AndroidEntryPoint
-import com.example.doordashlite.BR
 
 
 @AndroidEntryPoint
@@ -24,10 +22,7 @@ class DetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Fresco.initialize(this)
-
-
-        var businessId = intent.getIntExtra(BUSINESSID, 0)
+        val businessId = intent.getIntExtra(BUSINESSID, 0)
         setView(businessId)
         setObserver()
 
@@ -44,9 +39,7 @@ class DetailsActivity : AppCompatActivity() {
                 Status.SUCCESS -> {
                     binding.progress.visibility = View.GONE
                     binding.restaurantLayout.visibility = View.VISIBLE
-                    it.data.let {restaurant ->
-                        updateView(restaurant)//res -> res?.stores.let { it1 -> adapter.submitList(it1) }
-                    }
+                    updateView(it.data)
 
                 }
                 Status.ERROR -> {
@@ -62,9 +55,11 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun updateView(resp: RestaurantResponse?){
-        binding.ivCover.setImageURI(resp?.coverImgURL)
-        binding.setVariable(BR.viewModel, resp)
-        binding.executePendingBindings()
+        binding.ivCover.setImageURI(resp?.cover_img_url)
+        binding.tvName.text = resp?.name.toString()
+        binding.tvDescription.text = resp?.description.toString()
+      //  binding.setVariable(BR.viewModel, resp)
+      //  binding.executePendingBindings()
     }
 
 

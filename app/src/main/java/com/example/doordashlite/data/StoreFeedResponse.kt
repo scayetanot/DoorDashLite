@@ -1,12 +1,12 @@
 package com.example.doordashlite.data
 
-import com.squareup.moshi.Json
+import com.google.gson.annotations.SerializedName
 
 data class StoreFeedResponse(
         var numResults: Int? = 0,
-        @Json(name = "is_first_time_user") var isFirstTimeUser: Boolean?,
-        @Json(name = "sort_order") var sortOrder: String? = "",
-        @Json(name = "next_offset") var nextOffset: Int? = 0,
-        @Json(name = "show_list_as_pickup") var showListAsPickup: Boolean?,
+        @SerializedName("is_first_time_user") var isFirstTimeUser: Boolean?,
+        @SerializedName("sort_order") var sortOrder: String? = "",
+        @SerializedName("next_offset") var nextOffset: Int? = 0,
+        @SerializedName("show_list_as_pickup") var showListAsPickup: Boolean?,
         var stores: List<Store>
 )

@@ -20,7 +20,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{(v) -> viewModel.onItemClick(position)}"
+        android:onClick="@{(v) -> viewModel.onItemClick(model.id)}"
         android:layout_marginBottom="1dp">
 
         <LinearLayout
@@ -32,7 +32,7 @@
             <com.facebook.drawee.view.SimpleDraweeView
                 android:layout_width="140dp"
                 android:layout_height="80dp"
-                android:scaleType="centerCrop"
+                fresco:actualImageScaleType="fitCenter"
                 android:layout_gravity="center"
                 android:id="@+id/ivImage"/>
 

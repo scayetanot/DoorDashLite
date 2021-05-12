@@ -1,231 +1,111 @@
 package com.example.doordashlite.data
 
-import com.squareup.moshi.Json
 
 data class RestaurantResponse (
-        @Json(name = "phone_number")
-        val phoneNumber: String,
-
-        @Json(name = "yelp_review_count")
-        val yelpReviewCount: Long,
-
-        @Json(name = "is_consumer_subscription_eligible")
-        val isConsumerSubscriptionEligible: Boolean,
-
-        @Json(name = "offers_delivery")
-        val offersDelivery: Boolean,
-
-        @Json(name = "max_order_size")
-        val maxOrderSize: Any? = null,
-
-        @Json(name = "delivery_fee")
-        val deliveryFee: Long,
-
-        @Json(name = "max_composite_score")
-        val maxCompositeScore: Long,
-
-        @Json(name = "provides_external_courier_tracking")
-        val providesExternalCourierTracking: Boolean,
-
+        val phone_number: String?,
+        val yelp_review_count: Long,
+        val is_consumer_subscription_eligible: Boolean,
+        val offers_delivery: Boolean,
+        val max_order_size: Any? = null,
+        val delivery_fee: Long,
+        val max_composite_score: Long,
+        val provides_external_courier_tracking: Boolean,
         val id: Long,
-
-        @Json(name = "average_rating")
-        val averageRating: Double,
-
-        val tags: List<String>,
-
-        @Json(name = "delivery_radius")
-        val deliveryRadius: Long,
-
-        @Json(name = "inflation_rate")
-        val inflationRate: Long,
-
+        val average_rating: Double,
+        val tags: List<String?>,
+        val delivery_radius: Long,
+        val inflation_rate: Long,
         val menus: List<Menu>,
-
-        @Json(name = "show_store_menu_header_photo")
-        val showStoreMenuHeaderPhoto: Boolean,
-
-        @Json(name = "composite_score")
-        val compositeScore: Long,
-
-        @Json(name = "fulfills_own_deliveries")
-        val fulfillsOwnDeliveries: Boolean,
-
-        @Json(name = "offers_pickup")
-        val offersPickup: Boolean,
-
-        @Json(name = "number_of_ratings")
-        val numberOfRatings: Long,
-
-        @Json(name = "status_type")
-        val statusType: String,
-
-        @Json(name = "is_only_catering")
-        val isOnlyCatering: Boolean,
-
-        val status: String,
-
-        @Json(name = "delivery_fee_details")
-        val deliveryFeeDetails: DeliveryFeeDetails,
-
-        @Json(name = "object_type")
-        val objectType: String,
-
-        val description: String,
+        val show_store_menu_header_photo: Boolean,
+        val composite_score: Long,
+        val fulfills_own_deliveries: Boolean,
+        val offers_pickup: Boolean,
+        val number_of_ratings: Long,
+        val status_type: String?,
+        val is_only_catering: Boolean,
+        val status: String?,
+        val delivery_fee_details: DeliveryFeeDetails,
+        val object_type: String?,
+        val description: String?,
         val business: Business,
-
-        @Json(name = "yelp_biz_id")
-        val yelpBizID: String,
-
-        @Json(name = "asap_time")
-        val asapTime: Long,
-
-        @Json(name = "should_show_store_logo")
-        val shouldShowStoreLogo: Boolean,
-
-        @Json(name = "yelp_rating")
-        val yelpRating: Long,
-
-        @Json(name = "extra_sos_delivery_fee")
-        val extraSosDeliveryFee: Long,
-
-        @Json(name = "business_id")
-        val businessID: Long,
-
-        @Json(name = "special_instructions_max_length")
-        val specialInstructionsMaxLength: Any? = null,
-
-        @Json(name = "cover_img_url")
-        val coverImgURL: String,
-
+        val yelp_biz_id: String?,
+        val asap_time: Long,
+        val should_show_store_logo: Boolean,
+        val yelp_rating: Float,
+        val extra_sos_delivery_fee: Long,
+        val business_id: Long,
+        val special_instructions_max_length: Any? = null,
+        val cover_img_url: String?,
         val address: Address,
-
-        @Json(name = "price_range")
-        val priceRange: Long,
-
-        val slug: String,
-
-        @Json(name = "show_suggested_items")
-        val showSuggestedItems: Boolean,
-
-        val name: String,
-
-        @Json(name = "is_newly_added")
-        val isNewlyAdded: Boolean,
-
-        @Json(name = "is_good_for_group_orders")
-        val isGoodForGroupOrders: Boolean,
-
-        @Json(name = "service_rate")
-        val serviceRate: Long,
-
-        @Json(name = "merchant_promotions")
-        val merchantPromotions: List<MerchantPromotion>,
-
-        @Json(name = "header_image_url")
-        val headerImageURL: Any? = null
+        val price_range: Long,
+        val slug: String?,
+        val show_suggested_items: Boolean,
+        val name: String?,
+        val is_newly_added: Boolean,
+        val is_good_for_group_orders: Boolean,
+        val service_rate: Long,
+        val merchant_promotions: List<MerchantPromotion>,
+        val header_image_url: String? = null
 )
 
 data class Address (
-        val city: String,
-        val subpremise: String,
+        val city: String?,
+        val subpremise: String?,
         val id: Long,
-
-        @Json(name = "printable_address")
-        val printableAddress: String,
-
-        val state: String,
-        val street: String,
-        val country: String,
+        val printable_address: String?,
+        val state: String?,
+        val street: String?,
+        val country: String?,
         val lat: Double,
         val lng: Double,
-        val shortname: String,
-
-        @Json(name = "zip_code")
-        val zipCode: String
+        val shortname: String?,
+        val zip_code: String?
 )
 
 data class Business (
-        @Json(name = "business_vertical")
-        val businessVertical: Any? = null,
-
+        val business_vertical: Any? = null,
         val id: Long,
-        val name: String
+        val name: String?
 )
 
 data class DeliveryFeeDetails (
-        @Json(name = "final_fee")
-        val finalFee: Fee,
-
+        val final_fee: Fee,
         val discount: Discount,
-
-        @Json(name = "surge_fee")
-        val surgeFee: Fee,
-
-        @Json(name = "original_fee")
-        val originalFee: Fee
+        val surge_fee: Fee,
+        val original_fee: Fee
 )
 
 data class Discount (
-        val description: String,
-
-        @Json(name = "source_type")
-        val sourceType: String,
-
-        val text: String,
-
-        @Json(name = "discount_type")
-        val discountType: String,
-
+        val description: String?,
+        val source_type: String?,
+        val text: String?,
+        val discount_type: String?,
         val amount: Amount,
-
-        @Json(name = "min_subtotal")
-        val minSubtotal: Amount
+        val min_subtotal: Amount
 )
 
 data class Amount (
-        val currency: String,
-
-        @Json(name = "display_string")
-        val displayString: String,
-
-        @Json(name = "unit_amount")
-        val unitAmount: Long? = null,
-
-        @Json(name = "decimal_places")
-        val decimalPlaces: Long? = null
+        val currency: String?,
+        val display_string: String?,
+        val unit_amount: Long? = null,
+        val decimal_places: Long? = null
 )
 
 data class Fee (
-        @Json(name = "display_string")
-        val displayString: String,
-
-        @Json(name = "unit_amount")
-        val unitAmount: Long
+        val display_string: String?,
+        val unit_amount: Long
 )
 
 data class Menu (
-        val status: String,
-
-        @Json(name = "menu_version")
-        val menuVersion: Long,
-
-        val subtitle: String,
-        val name: String,
-
-        @Json(name = "open_hours")
-        val openHours: List<List<OpenHour>>,
-
-        @Json(name = "is_business_enabled")
-        val isBusinessEnabled: Any? = null,
-
-        @Json(name = "is_catering")
-        val isCatering: Boolean,
-
+        val status: String?,
+        val menu_version: Long,
+        val subtitle: String?,
+        val name: String?,
+        val open_hours: List<List<OpenHour>>,
+        val is_business_enabled: Any? = null,
+        val is_catering: Boolean,
         val id: Long,
-
-        @Json(name = "status_type")
-        val statusType: String
+        val status_type: String?
 )
 
 data class OpenHour (
@@ -234,20 +114,10 @@ data class OpenHour (
 )
 
 data class MerchantPromotion (
-        @Json(name = "minimum_subtotal_monetary_fields")
-        val minimumSubtotalMonetaryFields: Amount,
-
-        @Json(name = "delivery_fee")
-        val deliveryFee: Long,
-
-        @Json(name = "delivery_fee_monetary_fields")
-        val deliveryFeeMonetaryFields: Amount,
-
-        @Json(name = "minimum_subtotal")
-        val minimumSubtotal: Any? = null,
-
-        @Json(name = "new_store_customers_only")
-        val newStoreCustomersOnly: Boolean,
-
+        val minimum_subtotal_monetary_fields: Amount,
+        val delivery_fee: Long,
+        val delivery_fee_monetary_fields: Amount,
+        val minimum_subtotal: String? = null,
+        val new_store_customers_only: Boolean,
         val id: Long
 )
