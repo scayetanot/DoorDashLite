@@ -3,4 +3,7 @@
     <string name="open">Open</string>
     <string name="closed">Closed</string>
     <string name="minute">min.</string>
+    <string name="currency">$</string>
+    <string name="empty_txt">--</string>
+    <string name="separator">-</string>
 </resources>

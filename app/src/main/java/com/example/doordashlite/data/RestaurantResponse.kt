@@ -37,7 +37,7 @@ data class RestaurantResponse (
         val special_instructions_max_length: Any? = null,
         val cover_img_url: String?,
         val address: Address,
-        val price_range: Long,
+        val price_range: Int?,
         val slug: String?,
         val show_suggested_items: Boolean,
         val name: String?,
